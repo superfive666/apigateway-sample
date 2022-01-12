@@ -4,18 +4,12 @@ server:
 spring:
   cloud:
     gateway:
-      default-filters:
-        - PreserveHostHeader
       routes:
         - id: s3_static_resources
-          uri: https://opms-assets.s3.ap-southeast-1.amazonaws.com
+          uri: 'https://opms-assets.s3.ap-southeast-1.amazonaws.com'
           predicates:
             - Path=/s3/**
         - id: react_website
-          uri: https://opms-dashboard.s3.ap-southeast-1.amazonaws.com/app
+          uri: 'https://opms-dashboard.s3.ap-southeast-1.amazonaws.com'
           predicates:
             - Path=/app/**
-        - id: test_route
-          uri: https://example.com
-          predicates:
-            - Path=/test/**
