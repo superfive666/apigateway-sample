@@ -2,7 +2,15 @@ package com.osakakuma.apigateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
+import java.net.URI;
+
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @SpringBootApplication
 public class ApigatewayApplication {
@@ -11,8 +19,10 @@ public class ApigatewayApplication {
 		SpringApplication.run(ApigatewayApplication.class, args);
 	}
 
-	@RequestMapping("/")
-	public String redirect() {
-		return "redirect:/app";
+	@Bean
+	RouterFunction<ServerResponse> routerFunction() {
+		return  route(GET("/"), req ->
+				ServerResponse.temporaryRedirect(URI.create("/app"))
+						.build());
 	}
 }
