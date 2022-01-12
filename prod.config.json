@@ -1,0 +1,14 @@
+{
+  "name": "apigateway",
+  "version": "0.0.1-SNAPSHOT",
+  "script": "java",
+  "args": [
+    "-Xms256m",
+    "-Xmx512m",
+    "-Dspring.profiles.active=prod",
+    "-jar",
+    "target/app.jar"
+  ],
+  "exec_interpreter": "",
+  "exec_mode": "fork"
+}
