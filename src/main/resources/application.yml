@@ -10,6 +10,10 @@ spring:
           predicates:
             - Path=/s3/**
         - id: react_website
-          uri: 'https://opms-dashboard.s3.ap-southeast-1.amazonaws.com'
+          uri: 'http://opms-dashboard.s3-website-ap-southeast-1.amazonaws.com'
           predicates:
             - Path=/app/**
+        - id: react_website_static
+          uri: 'http://opms-dashboard.s3-website-ap-southeast-1.amazonaws.com'
+          predicates:
+            - Path=/static/**
