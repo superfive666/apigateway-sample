@@ -20,6 +20,7 @@ public class ApigatewayApplication {
 
 	@Bean
 	RouterFunction<ServerResponse> routerFunction() {
+		// Index path routing configuration
 		return  route(GET("/"), req ->
 				ServerResponse.temporaryRedirect(URI.create("/app"))
 						.build());
